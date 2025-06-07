@@ -1,5 +1,10 @@
 package com.example.laberinto.visitor;
 
+import com.example.laberinto.formas.Forma;
+import com.example.laberinto.formas.orientaciones.Este;
+import com.example.laberinto.formas.orientaciones.Norte;
+import com.example.laberinto.formas.orientaciones.Oeste;
+import com.example.laberinto.formas.orientaciones.Sur;
 import com.example.laberinto.mapa.Pared;
 import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.mapa.contenedores.Armario;
@@ -22,4 +27,12 @@ public interface Visitor {
     void visitarBomba(Bomba bomba);
 
     void visitarTunel(Tunel tunel);
+
+    void visitarEste(Este este, Forma forma);
+
+    void visitarNorte(Norte norte, Forma forma);
+
+    void visitarSur(Sur sur, Forma forma);
+
+    void visitarOeste(Oeste oeste, Forma forma);
 }
