@@ -6,17 +6,17 @@ import com.example.laberinto.entes.Ente;
 public class Vivo extends Estado {
     @Override
     public void actua(Bicho unBicho) {
-        // todo
+        unBicho.puedeActuar();
     }
 
     @Override
     public void enteEsAtacadoPor(Ente atacado, Ente atacante) {
-        // todo
+        atacado.puedeSerAtacado(atacante);
     }
 
     @Override
     public void enteRecibeVeneno(Ente ente, int num) {
-        // todo
+        ente.puedeRecibirVeneno(num);
     }
 
     @Override

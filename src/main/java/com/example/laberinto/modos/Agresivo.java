@@ -10,7 +10,7 @@ public class Agresivo extends Modo {
 
     @Override
     void atacar(Bicho bicho) {
-        // todo
+        bicho.atacar();
     }
 
     @Override

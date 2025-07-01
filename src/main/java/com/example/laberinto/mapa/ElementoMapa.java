@@ -3,10 +3,12 @@ package com.example.laberinto.mapa;
 import com.example.laberinto.comandos.Comando;
 import com.example.laberinto.entes.Ente;
 import com.example.laberinto.visitor.Visitor;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public abstract class ElementoMapa {
 
     protected List<Comando> comandos = new ArrayList<Comando>();
