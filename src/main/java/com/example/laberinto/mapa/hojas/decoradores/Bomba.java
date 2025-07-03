@@ -13,7 +13,19 @@ public class Bomba extends Decorator {
 
     public Bomba() {
         this.activa = false;
+        this.puntosVida = 5;
     }
+
+    public void activar() {
+        this.activa = true;
+        System.out.println("Bomba activada");
+    }
+
+    public void desactivar() {
+        this.activa = false;
+        System.out.println("Bomba desactivada");
+    }
+
 
     @Override
     public void abrir(Ente alguien) {
@@ -27,7 +39,13 @@ public class Bomba extends Decorator {
 
     @Override
     public void entrar(Ente alguien) {
-
+        if (activa) {
+            System.out.println("¡" + alguien.getClass().getSimpleName() + " ha activado la bomba!");
+            alguien.dañar(this.puntosVida);
+            desactivar();
+        } else if (componente != null) {
+            componente.entrar(alguien);
+        }
     }
 
     @Override
