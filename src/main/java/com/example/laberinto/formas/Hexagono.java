@@ -2,7 +2,9 @@ package com.example.laberinto.formas;
 
 import com.example.laberinto.formas.orientaciones.Orientacion;
 import com.example.laberinto.mapa.ElementoMapa;
+import lombok.Data;
 
+@Data
 public class Hexagono extends Forma {
 
     private ElementoMapa norte;

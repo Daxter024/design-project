@@ -2,7 +2,9 @@ package com.example.laberinto.estados;
 
 import com.example.laberinto.entes.Bicho;
 import com.example.laberinto.entes.Ente;
+import lombok.Data;
 
+@Data
 public abstract class Estado {
 
     public abstract void actua(Bicho unBicho);

@@ -1,7 +1,9 @@
 package com.example.laberinto;
 
 import com.example.laberinto.entes.Bicho;
+import com.example.laberinto.formas.orientaciones.*;
 import com.example.laberinto.mapa.ElementoMapa;
+import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.mapa.contenedores.Habitacion;
 import com.example.laberinto.model.BichoJson;
 import com.example.laberinto.model.ElementoMapaJson;
@@ -18,6 +20,21 @@ import java.util.List;
 import java.util.Map;
 
 public class LaberintoBuilder {
+
+    public Orientacion obtenerOrientacion(String orientacion) {
+        switch (orientacion) {
+            case "norte":
+                return new Norte();
+            case "sur":
+                return new Sur();
+            case "este":
+                return new Este();
+            case "oeste":
+                return new Oeste();
+            default:
+                return null;
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         String archivo = args.length > 0 ? args[0] : "C:\\Users\\franc\\OneDrive\\Escritorio\\design-project\\src\\main\\java\\laberinto.json";
@@ -46,16 +63,20 @@ public class LaberintoBuilder {
             habitaciones.put(em.num, habitacion);
         }
 
-//        for (List<Object> puerta : labJson.puertas) {
-//            int desde = (Integer) puerta.get(0);
-//            String dirDesde = (String) puerta.get(1);
-//            int hasta = (Integer) puerta.get(2);
-//            String dirHasta = (String) puerta.get(3);
-//
-//            Puerta p = factory.fabricarPuerta(habitaciones.get(desde), dirDesde, habitaciones.get(hasta), dirHasta);
-//            habitaciones.get(desde).agregarHijo(p);
-////            habitaciones.get(hasta).agregarOrientacion();
-//        }
+
+        for (List<Object> puerta : labJson.puertas) {
+            int desde = (Integer) puerta.get(0);
+            String dirDesde = (String) puerta.get(1);
+            int hasta = (Integer) puerta.get(2);
+            String dirHasta = (String) puerta.get(3);
+
+
+            Puerta p = factory.fabricarPuerta(habitaciones.get(desde), dirDesde, habitaciones.get(hasta), dirHasta);
+            habitaciones.get(desde).agregarHijo(p);
+            habitaciones.get(hasta).agregarHijo(p);
+            habitaciones.get(desde).ponerEn(factory.fabricarOrientacion(dirDesde), p);
+            habitaciones.get(hasta).ponerEn(factory.fabricarOrientacion(dirHasta), p);
+        }
 
         List<Bicho> bichos = new ArrayList<>();
 
@@ -70,6 +91,9 @@ public class LaberintoBuilder {
         for (Habitacion h : habitaciones.values()) {
             System.out.println(h);
         }
+        System.out.println(new ArrayList<>(habitaciones.values()));
+        juego.getLaberinto().setHijos(new ArrayList<>(habitaciones.values()));
+        System.out.println(juego);
     }
 
 }

@@ -6,10 +6,12 @@ import com.example.laberinto.formas.Forma;
 import com.example.laberinto.mapa.Contenedor;
 import com.example.laberinto.mapa.ElementoMapa;
 import com.example.laberinto.visitor.Visitor;
+import lombok.Data;
 
 import java.awt.*;
 import java.util.List;
 
+@Data
 public abstract class Orientacion {
 
     public abstract Point calcularPosicionDesde(Forma forma);

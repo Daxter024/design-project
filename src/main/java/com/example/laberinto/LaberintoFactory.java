@@ -1,6 +1,7 @@
 package com.example.laberinto;
 
 import com.example.laberinto.entes.Bicho;
+import com.example.laberinto.formas.orientaciones.*;
 import com.example.laberinto.mapa.ElementoMapa;
 import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.mapa.contenedores.Armario;
@@ -58,6 +59,21 @@ public class LaberintoFactory {
                 return juego.fabricarBichoAgresivo(habitacion);
             default:
                 return juego.fabricarBicho();
+        }
+    }
+
+    public Orientacion fabricarOrientacion(String orientacion) {
+        switch (orientacion) {
+            case "Norte":
+                return new Norte();
+            case "Sur":
+                return new Sur();
+            case "Este":
+                return new Este();
+            case "Oeste":
+                return new Oeste();
+            default:
+                return null;
         }
     }
 }

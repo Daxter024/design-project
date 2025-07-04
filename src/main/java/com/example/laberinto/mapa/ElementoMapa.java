@@ -52,6 +52,10 @@ public abstract class ElementoMapa {
 
     public abstract void aceptar(Visitor visitor);
 
+    public void recorrer(java.util.function.Consumer<ElementoMapa> bloque) {
+        bloque.accept(this);
+    }
+
     /**
      * Testing
      **/

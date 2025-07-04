@@ -5,7 +5,9 @@ import com.example.laberinto.entes.Ente;
 import com.example.laberinto.formas.Cuadrado;
 import com.example.laberinto.mapa.Contenedor;
 import com.example.laberinto.visitor.Visitor;
+import lombok.Data;
 
+@Data
 public class Habitacion extends Contenedor {
 
     public Habitacion(int num) {

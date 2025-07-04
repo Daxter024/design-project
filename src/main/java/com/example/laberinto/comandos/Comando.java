@@ -2,7 +2,9 @@ package com.example.laberinto.comandos;
 
 import com.example.laberinto.entes.Ente;
 import com.example.laberinto.mapa.ElementoMapa;
+import lombok.Data;
 
+@Data
 public abstract class Comando {
 
     protected ElementoMapa receptor;

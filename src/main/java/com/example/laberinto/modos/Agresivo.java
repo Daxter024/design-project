@@ -1,7 +1,9 @@
 package com.example.laberinto.modos;
 
 import com.example.laberinto.entes.Bicho;
+import lombok.Data;
 
+@Data
 public class Agresivo extends Modo {
 
     public Agresivo() {
@@ -23,7 +25,7 @@ public class Agresivo extends Modo {
         System.out.println("Bicho agresivo no duerme");
     }
 
-    public boolean esAgresivo(){
+    public boolean esAgresivo() {
         return true;
     }
 }

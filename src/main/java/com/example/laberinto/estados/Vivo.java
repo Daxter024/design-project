@@ -2,7 +2,9 @@ package com.example.laberinto.estados;
 
 import com.example.laberinto.entes.Bicho;
 import com.example.laberinto.entes.Ente;
+import lombok.Data;
 
+@Data
 public class Vivo extends Estado {
     @Override
     public void actua(Bicho unBicho) {

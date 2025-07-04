@@ -3,7 +3,9 @@ package com.example.laberinto.mapa.hojas;
 import com.example.laberinto.entes.Ente;
 import com.example.laberinto.mapa.Hoja;
 import com.example.laberinto.visitor.Visitor;
+import lombok.Data;
 
+@Data
 public class Tunel extends Hoja {
 
     public Tunel() {

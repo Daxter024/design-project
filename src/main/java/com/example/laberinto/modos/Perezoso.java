@@ -1,7 +1,9 @@
 package com.example.laberinto.modos;
 
 import com.example.laberinto.entes.Bicho;
+import lombok.Data;
 
+@Data
 public class Perezoso extends Modo {
 
     public Perezoso() {
@@ -21,10 +23,10 @@ public class Perezoso extends Modo {
 
     @Override
     void dormir() {
-        try{
+        try {
             Thread.sleep(1000);
             System.out.println("Bicho perezoso está durmiendo");
-        }catch(InterruptedException e){
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             System.out.println("El sueño del bicho fue interrumpido.");
         }

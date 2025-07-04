@@ -2,7 +2,9 @@ package com.example.laberinto.mapa;
 
 import com.example.laberinto.entes.Ente;
 import com.example.laberinto.visitor.Visitor;
+import lombok.Data;
 
+@Data
 public class Pared extends ElementoMapa {
 
     public Pared() {

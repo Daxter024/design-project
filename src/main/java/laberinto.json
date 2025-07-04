@@ -36,18 +36,24 @@
     {
       "elementoMapa": "habitacion",
       "tipo": "normal",
-      "num": 4,
+      "num": 3,
       "hijos": []
     }
   ],
   "puertas": [
     [
-      1,
+      0,
       "Sur",
-      2,
+      1,
       "Norte"
     ],
     [
+      0,
+      "Este",
+      2,
+      "Oeste"
+    ],
+    [
       1,
       "Este",
       3,
@@ -55,14 +61,8 @@
     ],
     [
       2,
-      "Este",
-      4,
-      "Oeste"
-    ],
-    [
-      3,
       "Sur",
-      4,
+      3,
       "Norte"
     ]
   ],
