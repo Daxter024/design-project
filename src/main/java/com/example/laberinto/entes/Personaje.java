@@ -12,14 +12,14 @@ public class Personaje extends Ente {
 
     protected String nick;
 
-    public Personaje(){
+    public Personaje() {
         super();
     }
 
     @Override
     public void heMuerto() {
         this.estado = new Muerto();
-        if(this.juego != null){
+        if (this.juego != null) {
             // TODO: this.juego.personajeMuere() -> FIN DEL JUEGO
         }
     }
@@ -27,14 +27,14 @@ public class Personaje extends Ente {
     @Override
     public Ente buscarEnemigo() {
         // todo: hace falta comprobar si el estado es Vivo? o el hilo va acabar definitivamente
-        if(this.juego != null){
-            // todo: return this.juego.buscarBicho();
+        if (this.juego != null) {
+            return this.juego.buscarBicho();
         }
         return null;
     }
 
-    public List<Comando> obtenerComandos(){
-        if(this.posicion != null){
+    public List<Comando> obtenerComandos() {
+        if (this.posicion != null) {
             return this.posicion.getComandos();
         }
         return new ArrayList<Comando>();

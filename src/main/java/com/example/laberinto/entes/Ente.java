@@ -63,7 +63,7 @@ public abstract class Ente {
     public void atacar() {
         Ente ente = buscarEnemigo();
         if (ente != null) {
-//            ente.esAtacadoPor(this);
+            ente.esAtacadoPor(this);
         }
     }
 
@@ -74,7 +74,9 @@ public abstract class Ente {
     // Llamado desde Vivo.java
     public void puedeSerAtacado(Ente atacante) {
         // todo: la logica del ataque this -> recibe el ataque de atacante que dependera de su daño
-        System.out.println("Implementar puedeSerAtacado");
+//        System.out.println("Implementar puedeSerAtacado");
+        dañar(atacante.getPoder());
+        System.out.println(getClass().getSimpleName() + " ha sido atacado por " + atacante.getClass().getSimpleName());
     }
 
     /**

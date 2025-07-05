@@ -180,4 +180,25 @@ public class Juego {
         });
     }
 
+    /**
+     * Busqueda
+     **/
+
+    public Bicho buscarBicho() {
+        return bichos.stream()
+                .filter(Bicho::estaVivo)
+                .filter(b -> b.getPosicion().equals(personaje.getPosicion()))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Personaje buscarPersonaje(Bicho bicho) {
+        if (personaje != null && personaje.getPosicion().equals(bicho.getPosicion())) {
+            System.out.println("personaje encontrado");
+            return personaje;
+        }
+        return null;
+    }
+
+
 }

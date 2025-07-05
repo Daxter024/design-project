@@ -1,10 +1,11 @@
 package com.example.laberinto;
 
 import com.example.laberinto.entes.Bicho;
-import com.example.laberinto.formas.orientaciones.*;
+import com.example.laberinto.entes.Personaje;
 import com.example.laberinto.mapa.ElementoMapa;
 import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.mapa.contenedores.Habitacion;
+import com.example.laberinto.mapa.contenedores.Laberinto;
 import com.example.laberinto.model.BichoJson;
 import com.example.laberinto.model.ElementoMapaJson;
 import com.example.laberinto.model.LaberintoJson;
@@ -18,23 +19,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LaberintoBuilder {
-
-    public Orientacion obtenerOrientacion(String orientacion) {
-        switch (orientacion) {
-            case "norte":
-                return new Norte();
-            case "sur":
-                return new Sur();
-            case "este":
-                return new Este();
-            case "oeste":
-                return new Oeste();
-            default:
-                return null;
-        }
-    }
 
     public static void main(String[] args) throws IOException {
         String archivo = args.length > 0 ? args[0] : "C:\\Users\\franc\\OneDrive\\Escritorio\\design-project\\src\\main\\java\\laberinto.json";
@@ -94,6 +81,56 @@ public class LaberintoBuilder {
         System.out.println(new ArrayList<>(habitaciones.values()));
         juego.getLaberinto().setHijos(new ArrayList<>(habitaciones.values()));
         System.out.println(juego);
+
+        Personaje personaje = new Personaje();
+        personaje.setJuego(juego);
+        personaje.setNick("Fran");
+
+        juego.setPersonaje(personaje);
+
+        // SOLO SE PUEDE ENTRAR UNA VEZ AL LABERINTO
+        Laberinto laberinto = juego.getLaberinto();
+        laberinto.entrar(personaje);
+
+        // SI EJECUTAMOS DE NUEVO NO DEJA
+        laberinto.entrar(personaje);
+
+        System.out.println("La posicion " + personaje.getPosicion());
+
+
+        personaje.atacar();
+
+
+        Habitacion hab1 = (Habitacion) laberinto.getHijos().get(1);
+        List<Puerta> puertasHab1 = hab1.getHijos().stream()
+                .filter(elemento -> elemento instanceof Puerta)
+                .map(elemento -> (Puerta) elemento)
+                .collect(Collectors.toList());
+
+        Bicho bicho1 = juego.getBichos().get(0);
+        Bicho bicho2 = juego.getBichos().get(1);
+        Bicho bicho3 = juego.getBichos().get(2);
+        Bicho bicho4 = juego.getBichos().get(3);
+
+        bicho1.buscarEnemigo();
+        bicho2.buscarEnemigo();
+        bicho3.atacar();
+
+        bicho3.actua();
+
+        // abro la puerta de hab0 - hab1
+        puertasHab1.get(0).abrir(personaje);
+//        puertasHab1.get(0).setAbierta(true);
+
+        // personaje entra en la habitacion 1
+        juego.getLaberinto().getHijos().get(1).entrar(personaje);
+
+
+//        personaje.getPosicion().getPadre().getForma().
+
+
+        // TODO: LOS BICHOS TIENEN QUE ESTAR EN BUCLE ATACANDO Y CUANDO MUERAN TODOS SE ACABA EL JUEGO
+        // TODO: SI MUERE EL PERSONAJE SE ACABA EL JUEGO
     }
 
 }
