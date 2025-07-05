@@ -13,7 +13,7 @@ public class Perezoso extends Modo {
     @Override
     void atacar(Bicho bicho) {
         // bicho perezoso no ataca
-        System.out.println("Bicho perezoso no ataca");
+//        System.out.println("Bicho perezoso no ataca");
     }
 
     @Override

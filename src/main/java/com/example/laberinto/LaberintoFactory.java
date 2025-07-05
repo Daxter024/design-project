@@ -16,7 +16,8 @@ public class LaberintoFactory {
         switch (tipo) {
             case "normal":
                 return juego.fabricarHabitacion(num);
-
+            case "bomba":
+                return juego.fabricarHabitacionBomba(num);
             default:
                 return new Habitacion(num);
         }

@@ -22,7 +22,7 @@ public class Agresivo extends Modo {
 
     @Override
     void dormir() {
-        System.out.println("Bicho agresivo no duerme");
+//        System.out.println("Bicho agresivo no duerme");
     }
 
     public boolean esAgresivo() {

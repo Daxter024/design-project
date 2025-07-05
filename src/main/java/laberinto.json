@@ -30,6 +30,12 @@
           "tipo": "normal",
           "num": 1,
           "hijos": []
+        },
+        {
+          "elementoMapa": "cofre",
+          "tipo": "venenoso",
+          "num": 1,
+          "hijos": []
         }
       ]
     },

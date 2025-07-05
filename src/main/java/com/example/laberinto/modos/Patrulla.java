@@ -22,6 +22,6 @@ public class Patrulla extends Modo {
 
     @Override
     void dormir() {
-        System.out.println("Bicho patrulla no duerme");
+//        System.out.println("Bicho patrulla no duerme");
     }
 }

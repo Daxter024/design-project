@@ -65,26 +65,18 @@ public class LaberintoBuilder {
             habitaciones.get(hasta).ponerEn(factory.fabricarOrientacion(dirHasta), p);
         }
 
-//        List<Bicho> bichos = new ArrayList<>();
 
         for (BichoJson bichoJson : labJson.bichos) {
             Bicho bicho = factory.fabricarBicho(bichoJson.modo, habitaciones.get(bichoJson.posicion));
-//            bichos.add(bicho);
             juego.agregarBicho(bicho);
         }
 
-//        juego.setBichos(bichos);
-
-
-        System.out.println("✅ Laberinto construido con " + habitaciones.size() + " habitaciones:");
-        for (Habitacion h : habitaciones.values()) {
-            System.out.println(h);
-        }
-        System.out.println(new ArrayList<>(habitaciones.values()));
+        
         juego.getLaberinto().setHijos(new ArrayList<>(habitaciones.values()));
-        System.out.println(juego);
+
 
         Personaje personaje = new Personaje();
+        personaje.setPoder(2);
         personaje.setJuego(juego);
         personaje.setNick("Fran");
 
@@ -104,6 +96,8 @@ public class LaberintoBuilder {
         System.out.println("La posicion " + personaje.getPosicion());
 
 
+        personaje.atacar();
+        personaje.atacar();
         personaje.atacar();
 
 
@@ -126,43 +120,34 @@ public class LaberintoBuilder {
         Bicho bicho3 = juego.getBichos().get(2);
         Bicho bicho4 = juego.getBichos().get(3);
 
-//        bicho1.buscarEnemigo();
-//        bicho2.buscarEnemigo();
-//        bicho3.atacar();
-//
-//        bicho3.actua();
 
         // abro la puerta de hab0 - hab1
         puertasHab1.get(0).abrir(personaje);
-//        puertasHab1.get(0).setAbierta(true);
+
 
         // personaje entra en la habitacion 1
         juego.getLaberinto().getHijos().get(1).entrar(personaje);
+        // comienzan a atacarle
 
 //        juego.bichoMuere(bicho1);
 //        juego.bichoMuere(bicho2);
 //        juego.bichoMuere(bicho3);
 //        juego.bichoMuere(bicho4);
-//        personaje.getPosicion().getPadre().getForma().
+
 
         Habitacion hab2 = (Habitacion) laberinto.getHijos().get(2);
         Habitacion hab3 = (Habitacion) laberinto.getHijos().get(3);
 
 
-        List<Puerta> puertasHab2 = hab1.getHijos().stream()
+        List<Puerta> puertasHab2 = hab2.getHijos().stream()
                 .filter(elemento -> elemento instanceof Puerta)
                 .map(elemento -> (Puerta) elemento)
                 .collect(Collectors.toList());
 
-//        for (Puerta puerta : puertasHab2) {
-//            if (puerta.getLado1().equals(hab2) && puerta.getLado2().equals(hab3)) {
-//                puerta.setAbierta(true);
-//            }
-//        }
+        // Se abre la puerta entre la habitacion
+        puertasHab2.get(1).abrir(bicho3);
 
-
-        // TODO: LOS BICHOS TIENEN QUE ESTAR EN BUCLE ATACANDO Y CUANDO MUERAN TODOS SE ACABA EL JUEGO
-        // TODO: SI MUERE EL PERSONAJE SE ACABA EL JUEGO
+        // todo -> personaje atacar tantas veces como sea necesario para acabar con el bicho, hacer lo mismo para perezoso
 
 //        juego.bichoMuere(bicho3);
     }

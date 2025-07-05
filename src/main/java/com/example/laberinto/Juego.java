@@ -90,8 +90,44 @@ public class Juego {
         return habitacion;
     }
 
+    public Habitacion fabricarHabitacionBomba(int num) {
+        Habitacion habitacion = new Habitacion(num);
+        Norte norte = fabricarNorte();
+        Oeste oeste = fabricarOeste();
+        Sur sur = fabricarSur();
+        Este este = fabricarEste();
+
+
+        habitacion.ponerEn(norte, fabricarParedBomba());
+        habitacion.ponerEn(sur, fabricarParedBomba());
+        habitacion.ponerEn(este, fabricarParedBomba());
+        habitacion.ponerEn(oeste, fabricarParedBomba());
+
+        habitacion.agregarOrientacion(norte);
+        habitacion.agregarOrientacion(sur);
+        habitacion.agregarOrientacion(este);
+        habitacion.agregarOrientacion(oeste);
+
+        return habitacion;
+    }
+
     public Cofre fabricarCofre(int num) {
-        return new Cofre(num);
+        Cofre cofre = new Cofre(num);
+
+        Norte norte = fabricarNorte();
+        Oeste oeste = fabricarOeste();
+        Sur sur = fabricarSur();
+        Este este = fabricarEste();
+        cofre.ponerEn(norte, fabricarPared());
+        cofre.ponerEn(sur, fabricarPared());
+        cofre.ponerEn(este, fabricarPared());
+        cofre.ponerEn(oeste, fabricarPared());
+
+        cofre.agregarOrientacion(norte);
+        cofre.agregarOrientacion(sur);
+        cofre.agregarOrientacion(este);
+        cofre.agregarOrientacion(oeste);
+        return cofre;
     }
 
     public Curativo fabricarCurativo() {
@@ -294,7 +330,7 @@ public class Juego {
         }
 
         if (personaje != null && sameHabitacion) {
-            System.out.println("personaje encontrado");
+//            System.out.println("personaje encontrado");
             return personaje;
         }
         return null;
