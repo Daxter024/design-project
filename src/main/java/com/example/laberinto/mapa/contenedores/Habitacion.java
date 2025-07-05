@@ -8,8 +8,10 @@ import com.example.laberinto.mapa.ElementoMapa;
 import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.visitor.Visitor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(of = "num")
 public class Habitacion extends Contenedor {
 
     public Habitacion(int num) {

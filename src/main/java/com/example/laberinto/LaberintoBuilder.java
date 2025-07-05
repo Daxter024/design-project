@@ -139,8 +139,8 @@ public class LaberintoBuilder {
         // personaje entra en la habitacion 1
         juego.getLaberinto().getHijos().get(1).entrar(personaje);
 
-        juego.bichoMuere(bicho1);
-        juego.bichoMuere(bicho2);
+//        juego.bichoMuere(bicho1);
+//        juego.bichoMuere(bicho2);
 //        juego.bichoMuere(bicho3);
 //        juego.bichoMuere(bicho4);
 //        personaje.getPosicion().getPadre().getForma().

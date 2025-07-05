@@ -28,7 +28,7 @@ public class Personaje extends Ente {
     public Ente buscarEnemigo() {
         // todo: hace falta comprobar si el estado es Vivo? o el hilo va acabar definitivamente
         if (this.juego != null) {
-            return this.juego.buscarBicho();
+            return this.juego.buscarBicho(this);
         }
         return null;
     }

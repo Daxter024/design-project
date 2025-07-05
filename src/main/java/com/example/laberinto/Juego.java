@@ -1,6 +1,7 @@
 package com.example.laberinto;
 
 import com.example.laberinto.entes.Bicho;
+import com.example.laberinto.entes.Ente;
 import com.example.laberinto.entes.Personaje;
 import com.example.laberinto.formas.orientaciones.Este;
 import com.example.laberinto.formas.orientaciones.Norte;
@@ -27,6 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 @Data
 public class Juego {
@@ -250,16 +252,48 @@ public class Juego {
      * Busqueda
      **/
 
-    public Bicho buscarBicho() {
-        return bichos.stream()
+    public Bicho buscarBicho(Ente alguien) {
+
+        List<Bicho> bichosVivos = bichos.stream()
                 .filter(Bicho::estaVivo)
-                .filter(b -> b.getPosicion().equals(personaje.getPosicion()))
-                .findFirst()
-                .orElse(null);
+                .filter(bicho -> bicho != alguien) // necesario pq sino se ataca a si mismo
+                .collect(Collectors.toList());
+        boolean sameHabitacion = false;
+
+        for (Bicho bicho : bichosVivos) {
+            if (bicho.getPosicion() instanceof Habitacion && alguien.getPosicion() instanceof Habitacion) {
+                int habBicho = ((Habitacion) bicho.getPosicion()).getNum();
+                int habAlguien = ((Habitacion) alguien.getPosicion()).getNum();
+                if (habBicho == habAlguien) {
+                    // ahora mismo está hecho de forma que solo puede haber un bicho en una habitacion,
+                    // en vd solo pouede atacar a uno y va a ser el primoero que encuentre en el array
+                    return bicho;
+                }
+            }
+        }
+        return null;
+
+//        return bichos.stream()
+//                .filter(Bicho::estaVivo)
+//                .filter(b -> b.getPosicion().equals(alguien.getPosicion()))
+//                .findFirst()
+//                .orElse(null);
     }
 
     public Personaje buscarPersonaje(Bicho bicho) {
-        if (personaje != null && personaje.getPosicion().equals(bicho.getPosicion())) {
+
+        boolean sameHabitacion = false;
+
+        // Necesario porque con el equals estaba dando error del sourcecode Vs bytecode
+        if (bicho.getPosicion() instanceof Habitacion && personaje.getPosicion() instanceof Habitacion) {
+            int habBicho = ((Habitacion) bicho.getPosicion()).getNum();
+            int habPersonaje = ((Habitacion) personaje.getPosicion()).getNum();
+            if (habBicho == habPersonaje) {
+                sameHabitacion = true;
+            }
+        }
+
+        if (personaje != null && sameHabitacion) {
             System.out.println("personaje encontrado");
             return personaje;
         }

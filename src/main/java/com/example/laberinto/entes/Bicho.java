@@ -43,7 +43,7 @@ public class Bicho extends Ente {
     @Override
     public Ente buscarEnemigo() {
         if (this.juego != null) {
-            if (this.modo instanceof Canibal) return juego.buscarBicho();
+            if (this.modo instanceof Canibal) return juego.buscarBicho(this);
             return juego.buscarPersonaje(this);
         }
         return null;
