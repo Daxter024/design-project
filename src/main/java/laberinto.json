@@ -69,19 +69,19 @@
   "bichos": [
     {
       "modo": "perezoso",
+      "posicion": 0
+    },
+    {
+      "modo": "agresivo",
       "posicion": 1
     },
     {
-      "modo": "agresivo",
+      "modo": "perezoso",
       "posicion": 2
     },
     {
-      "modo": "perezoso",
-      "posicion": 3
-    },
-    {
       "modo": "agresivo",
-      "posicion": 4
+      "posicion": 3
     }
   ]
 }
