@@ -8,6 +8,7 @@ import com.example.laberinto.formas.orientaciones.Sur;
 import com.example.laberinto.mapa.Pared;
 import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.mapa.contenedores.Armario;
+import com.example.laberinto.mapa.contenedores.Cofre;
 import com.example.laberinto.mapa.contenedores.Habitacion;
 import com.example.laberinto.mapa.contenedores.Laberinto;
 import com.example.laberinto.mapa.hojas.Tunel;
@@ -21,6 +22,8 @@ public interface Visitor {
     void visitarHabitacion(Habitacion habitacion);
 
     void visitarArmario(Armario armario);
+
+    void visitarCofre(Cofre cofre);
 
     void visitarLaberinto(Laberinto laberinto);
 

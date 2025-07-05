@@ -9,6 +9,7 @@ import com.example.laberinto.formas.orientaciones.Sur;
 import com.example.laberinto.mapa.Pared;
 import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.mapa.contenedores.Armario;
+import com.example.laberinto.mapa.contenedores.Cofre;
 import com.example.laberinto.mapa.contenedores.Habitacion;
 import com.example.laberinto.mapa.contenedores.Laberinto;
 import com.example.laberinto.mapa.hojas.decoradores.Bomba;
@@ -16,6 +17,8 @@ import com.example.laberinto.modos.Agresivo;
 import com.example.laberinto.modos.Canibal;
 import com.example.laberinto.modos.Patrulla;
 import com.example.laberinto.modos.Perezoso;
+import com.example.laberinto.tipos.Curativo;
+import com.example.laberinto.tipos.Venenoso;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -84,6 +87,31 @@ public class Juego {
 
         return habitacion;
     }
+
+    public Cofre fabricarCofre(int num) {
+        return new Cofre(num);
+    }
+
+    public Curativo fabricarCurativo() {
+        return new Curativo();
+    }
+
+    public Venenoso fabricarVenenoso() {
+        return new Venenoso();
+    }
+
+    public Cofre fabricarCofreCurativo(int num) {
+        Cofre cofre = fabricarCofre(num);
+        cofre.setTipo(fabricarCurativo());
+        return cofre;
+    }
+
+    public Cofre fabricarCofreVenenoso(int num) {
+        Cofre cofre = fabricarCofre(num);
+        cofre.setTipo(fabricarVenenoso());
+        return cofre;
+    }
+
 
     public Laberinto fabricarLaberinto() {
         return new Laberinto();

@@ -107,6 +107,14 @@ public class LaberintoBuilder {
         personaje.atacar();
 
 
+        Habitacion hab = (Habitacion) habitaciones.get(0);
+
+        System.out.println("Personaje vidas: " + personaje.getVidas());
+        // estoy abriendo el hijo 1 que es el cofre curativo
+        hab.getHijos().get(1).abrir(personaje);
+        System.out.println("Personaje vidas despues cofre: " + personaje.getVidas());
+
+
         Habitacion hab1 = (Habitacion) laberinto.getHijos().get(1);
         List<Puerta> puertasHab1 = hab1.getHijos().stream()
                 .filter(elemento -> elemento instanceof Puerta)

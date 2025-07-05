@@ -87,4 +87,8 @@ public abstract class ElementoMapa {
     public boolean esLaberinto() {
         return false;
     }
+
+    public boolean esCofre() {
+        return false;
+    }
 }

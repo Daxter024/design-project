@@ -35,6 +35,17 @@ public class LaberintoFactory {
                 switch (tipo) {
                     case "normal":
                         return new Armario(num);
+                    default:
+                        return new Armario(num);
+                }
+            case "cofre":
+                switch (tipo) {
+                    case "normal":
+                        return juego.fabricarCofre(num);
+                    case "curativo":
+                        return juego.fabricarCofreCurativo(num);
+                    case "venenoso":
+                        return juego.fabricarCofreVenenoso(num);
                 }
 
             default:

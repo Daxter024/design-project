@@ -11,6 +11,12 @@
           "tipo": "normal",
           "num": 0,
           "hijos": []
+        },
+        {
+          "elementoMapa": "cofre",
+          "tipo": "curativo",
+          "num": 0,
+          "hijos": []
         }
       ]
     },
