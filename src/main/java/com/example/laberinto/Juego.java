@@ -200,5 +200,82 @@ public class Juego {
         return null;
     }
 
+    /**
+     * Hilos
+     **/
 
+    public void agregarBicho(Bicho bicho) {
+        this.bichos.add(bicho);
+        bicho.setJuego(this);
+    }
+
+    public void lanzarHilo(Bicho bicho) {
+        Future<?> future = executor.submit(() -> {
+            while (bicho.estaVivo()) {
+                bicho.actua();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                    System.out.println("Hilo bicho terminado");
+                    break;
+                }
+            }
+            System.out.println("Hilo de bicho terminado: " + bicho.getClass().getSimpleName() + " (muerto).");
+        });
+        agregarHilo(bicho, future);
+    }
+
+    public void terminarHilo(Bicho bicho) {
+        Future<?> future = hilos.remove(bicho);
+        if (future != null) {
+            future.cancel(true);
+            bicho.heMuerto();
+        }
+    }
+
+    public void puedeLanzarBichos() {
+        this.bichos.forEach(this::lanzarHilo);
+    }
+
+    public void terminarBichos() {
+        this.bichos.forEach(this::terminarHilo);
+    }
+
+    public void muereBicho(Bicho bicho) {
+        System.out.println("Bicho ha muerto");
+        terminarHilo(bicho);
+    }
+
+    public boolean todosMuertos() {
+        return bichos.stream().noneMatch(Bicho::estaVivo);
+    }
+
+    public void agregarHilo(Bicho bicho, Future<?> hiloFuture) {
+        this.hilos.put(bicho, hiloFuture);
+    }
+
+    public void agregarPersonaje(Personaje pj) {
+
+    }
+
+    public void bichoMuere(Bicho bicho) {
+        System.out.println("Un bicho ha muerto");
+        terminarHilo(bicho);
+        if (todosMuertos()) {
+            // todo: final del juego
+            System.out.println("fin del juego");
+        }
+    }
+
+    public void personajeMuere() {
+        System.out.println("Personaje ha muerto");
+        finJuego("PERSONAJE PRINCIPAL HA MUERTO. FIN DEL JUEGO");
+    }
+
+    public void finJuego(String msg) {
+        System.out.println(msg);
+        terminarBichos();
+        executor.shutdownNow();
+    }
 }

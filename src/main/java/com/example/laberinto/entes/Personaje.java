@@ -20,7 +20,7 @@ public class Personaje extends Ente {
     public void heMuerto() {
         this.estado = new Muerto();
         if (this.juego != null) {
-            // TODO: this.juego.personajeMuere() -> FIN DEL JUEGO
+            this.juego.personajeMuere();
         }
     }
 

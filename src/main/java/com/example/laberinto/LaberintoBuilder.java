@@ -65,14 +65,16 @@ public class LaberintoBuilder {
             habitaciones.get(hasta).ponerEn(factory.fabricarOrientacion(dirHasta), p);
         }
 
-        List<Bicho> bichos = new ArrayList<>();
+//        List<Bicho> bichos = new ArrayList<>();
 
         for (BichoJson bichoJson : labJson.bichos) {
             Bicho bicho = factory.fabricarBicho(bichoJson.modo, habitaciones.get(bichoJson.posicion));
-            bichos.add(bicho);
+//            bichos.add(bicho);
+            juego.agregarBicho(bicho);
         }
 
-        juego.setBichos(bichos);
+//        juego.setBichos(bichos);
+
 
         System.out.println("✅ Laberinto construido con " + habitaciones.size() + " habitaciones:");
         for (Habitacion h : habitaciones.values()) {
@@ -87,6 +89,10 @@ public class LaberintoBuilder {
         personaje.setNick("Fran");
 
         juego.setPersonaje(personaje);
+
+
+        // BICHOS
+        juego.puedeLanzarBichos();
 
         // SOLO SE PUEDE ENTRAR UNA VEZ AL LABERINTO
         Laberinto laberinto = juego.getLaberinto();
@@ -112,11 +118,11 @@ public class LaberintoBuilder {
         Bicho bicho3 = juego.getBichos().get(2);
         Bicho bicho4 = juego.getBichos().get(3);
 
-        bicho1.buscarEnemigo();
-        bicho2.buscarEnemigo();
-        bicho3.atacar();
-
-        bicho3.actua();
+//        bicho1.buscarEnemigo();
+//        bicho2.buscarEnemigo();
+//        bicho3.atacar();
+//
+//        bicho3.actua();
 
         // abro la puerta de hab0 - hab1
         puertasHab1.get(0).abrir(personaje);
