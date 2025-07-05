@@ -28,13 +28,13 @@ public class Puerta extends ElementoMapa {
 
     @Override
     public void abrir(Ente alguien) {
-        
+
         if (this.abierta) {
             System.out.println("La puerta está ya abierta");
             return;
         }
 
-        if (alguien.getPosicion() != this.lado1 || alguien.getPosicion() != this.lado2) {
+        if (!alguien.getPosicion().equals(this.lado1) || !alguien.getPosicion().equals(this.lado2)) {
             System.out.println("No puede abrir la puerta pq el ente se encuentra en la posicion " + alguien.getPosicion() +
                     " y la puerta solo puede ser abierta desde " + this.lado1 + " & " + this.lado2);
             return;

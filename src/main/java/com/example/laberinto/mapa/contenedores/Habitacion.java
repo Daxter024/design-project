@@ -4,6 +4,8 @@ import com.example.laberinto.comandos.Entrar;
 import com.example.laberinto.entes.Ente;
 import com.example.laberinto.formas.Cuadrado;
 import com.example.laberinto.mapa.Contenedor;
+import com.example.laberinto.mapa.ElementoMapa;
+import com.example.laberinto.mapa.Puerta;
 import com.example.laberinto.visitor.Visitor;
 import lombok.Data;
 
@@ -28,8 +30,32 @@ public class Habitacion extends Contenedor {
     }
 
     public void entrar(Ente alguien) {
-        System.out.println(alguien.getClass().getSimpleName() + " está entrando en una habitación.");
-        // todo: settear su posicion
+        // todo: comprobar que la puerta está abierta y se puede entrar
+
+        for (ElementoMapa elemento : hijos) {
+            if (elemento instanceof Puerta) {
+                if (((Puerta) elemento).isAbierta()) {
+                    Habitacion habitacion1 = ((Puerta) elemento).getLado1();
+                    Habitacion habitacion2 = ((Puerta) elemento).getLado2();
+
+                    if (alguien.getPosicion().equals(habitacion1)) {
+                        System.out.println(alguien.getClass().getSimpleName() + " está entrando en una habitación.");
+                        alguien.setPosicion(habitacion2);
+                        return;
+                    } else if (alguien.getPosicion().equals(habitacion2)) {
+                        System.out.println(alguien.getClass().getSimpleName() + " está entrando en una habitación.");
+                        alguien.setPosicion(habitacion1);
+                        return;
+                    } else {
+                        System.out.println("No puedes acceder a esta habitacion, estás muy lejos");
+
+                    }
+                } else {
+                    System.out.println("La puerta no está abierta");
+                }
+
+            }
+        }
     }
 
     @Override
