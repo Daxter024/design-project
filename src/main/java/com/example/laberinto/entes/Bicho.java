@@ -32,7 +32,7 @@ public class Bicho extends Ente {
     public void heMuerto() {
         this.estado = new Muerto();
         if (this.juego != null) {
-            this.juego.muereBicho(this);
+            this.juego.bichoMuere(this);
         }
     }
 

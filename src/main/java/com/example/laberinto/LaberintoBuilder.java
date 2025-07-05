@@ -131,12 +131,17 @@ public class LaberintoBuilder {
         // personaje entra en la habitacion 1
         juego.getLaberinto().getHijos().get(1).entrar(personaje);
 
-
+        juego.bichoMuere(bicho1);
+        juego.bichoMuere(bicho2);
+//        juego.bichoMuere(bicho3);
+//        juego.bichoMuere(bicho4);
 //        personaje.getPosicion().getPadre().getForma().
 
 
         // TODO: LOS BICHOS TIENEN QUE ESTAR EN BUCLE ATACANDO Y CUANDO MUERAN TODOS SE ACABA EL JUEGO
         // TODO: SI MUERE EL PERSONAJE SE ACABA EL JUEGO
+
+        juego.bichoMuere(bicho3);
     }
 
 }

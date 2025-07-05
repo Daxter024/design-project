@@ -263,8 +263,7 @@ public class Juego {
         System.out.println("Un bicho ha muerto");
         terminarHilo(bicho);
         if (todosMuertos()) {
-            // todo: final del juego
-            System.out.println("fin del juego");
+            finJuego("GANASTE. FINAL DEL JUEGO");
         }
     }
 
