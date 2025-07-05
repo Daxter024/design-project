@@ -137,11 +137,26 @@ public class LaberintoBuilder {
 //        juego.bichoMuere(bicho4);
 //        personaje.getPosicion().getPadre().getForma().
 
+        Habitacion hab2 = (Habitacion) laberinto.getHijos().get(2);
+        Habitacion hab3 = (Habitacion) laberinto.getHijos().get(3);
+
+
+        List<Puerta> puertasHab2 = hab1.getHijos().stream()
+                .filter(elemento -> elemento instanceof Puerta)
+                .map(elemento -> (Puerta) elemento)
+                .collect(Collectors.toList());
+
+//        for (Puerta puerta : puertasHab2) {
+//            if (puerta.getLado1().equals(hab2) && puerta.getLado2().equals(hab3)) {
+//                puerta.setAbierta(true);
+//            }
+//        }
+
 
         // TODO: LOS BICHOS TIENEN QUE ESTAR EN BUCLE ATACANDO Y CUANDO MUERAN TODOS SE ACABA EL JUEGO
         // TODO: SI MUERE EL PERSONAJE SE ACABA EL JUEGO
 
-        juego.bichoMuere(bicho3);
+//        juego.bichoMuere(bicho3);
     }
 
 }

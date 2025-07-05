@@ -57,6 +57,10 @@ public class LaberintoFactory {
                 return juego.fabricarBichoPerezoso(habitacion);
             case "agresivo":
                 return juego.fabricarBichoAgresivo(habitacion);
+            case "patrulla":
+                return juego.fabricarBichoPatrulla(habitacion);
+            case "canibal":
+                return juego.fabricarBichoCanibal(habitacion);
             default:
                 return juego.fabricarBicho();
         }

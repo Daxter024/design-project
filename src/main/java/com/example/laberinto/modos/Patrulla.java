@@ -4,10 +4,10 @@ import com.example.laberinto.entes.Bicho;
 import lombok.Data;
 
 @Data
-public class Agresivo extends Modo {
+public class Patrulla extends Modo {
 
-    public Agresivo() {
-        this.color = "rojo";
+    public Patrulla() {
+        this.color = "amarillo";
     }
 
     @Override
@@ -17,15 +17,11 @@ public class Agresivo extends Modo {
 
     @Override
     void caminar(Bicho bicho) {
-        // Agresivo no camina
+        bicho.caminar();
     }
 
     @Override
     void dormir() {
-        System.out.println("Bicho agresivo no duerme");
-    }
-
-    public boolean esAgresivo() {
-        return true;
+        System.out.println("Bicho patrulla no duerme");
     }
 }

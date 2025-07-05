@@ -76,11 +76,11 @@
       "posicion": 1
     },
     {
-      "modo": "perezoso",
+      "modo": "patrulla",
       "posicion": 2
     },
     {
-      "modo": "agresivo",
+      "modo": "canibal",
       "posicion": 3
     }
   ]

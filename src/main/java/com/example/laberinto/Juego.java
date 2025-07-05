@@ -13,6 +13,8 @@ import com.example.laberinto.mapa.contenedores.Habitacion;
 import com.example.laberinto.mapa.contenedores.Laberinto;
 import com.example.laberinto.mapa.hojas.decoradores.Bomba;
 import com.example.laberinto.modos.Agresivo;
+import com.example.laberinto.modos.Canibal;
+import com.example.laberinto.modos.Patrulla;
 import com.example.laberinto.modos.Perezoso;
 import lombok.Data;
 
@@ -119,6 +121,14 @@ public class Juego {
         return new Agresivo();
     }
 
+    public Patrulla fabricarPatrulla() {
+        return new Patrulla();
+    }
+
+    public Canibal fabricarCanibal() {
+        return new Canibal();
+    }
+
     // Entidades
 
     public Bicho fabricarBicho() {
@@ -155,6 +165,34 @@ public class Juego {
 
     public Bicho fabricarBichoAgresivo(Habitacion habitacion) {
         Bicho bicho = fabricarBichoAgresivo();
+        bicho.setPosicion(habitacion);
+        return bicho;
+    }
+
+    public Bicho fabricarBichoPatrulla() {
+        Bicho bicho = new Bicho();
+        bicho.setModo(fabricarPatrulla());
+        bicho.setVidas(10);
+        bicho.setPoder(2);
+        return bicho;
+    }
+
+    public Bicho fabricarBichoPatrulla(Habitacion habitacion) {
+        Bicho bicho = fabricarBichoPatrulla();
+        bicho.setPosicion(habitacion);
+        return bicho;
+    }
+
+    public Bicho fabricarBichoCanibal() {
+        Bicho bicho = new Bicho();
+        bicho.setModo(fabricarCanibal());
+        bicho.setVidas(4);
+        bicho.setPoder(10);
+        return bicho;
+    }
+
+    public Bicho fabricarBichoCanibal(Habitacion habitacion) {
+        Bicho bicho = fabricarBichoCanibal();
         bicho.setPosicion(habitacion);
         return bicho;
     }
